@@ -154,7 +154,7 @@ namespace boost { namespace locale { namespace impl_icu {
         static constexpr int level_count = static_cast<int>(collate_level::identical) + 1;
         icu_std_converter<CharType> cvt_;
         icu::Locale locale_;
-        mutable boost::thread_specific_ptr<icu::Collator> collates_[level_count];
+        mutable std::unique_ptr<icu::Collator> collates_[level_count];
         bool is_utf8_;
     };
 

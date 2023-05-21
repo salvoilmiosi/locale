@@ -64,12 +64,12 @@ namespace boost { namespace locale { namespace impl_icu {
         static constexpr auto num_fmt_type_count = static_cast<unsigned>(num_fmt_type::ordinal) + 1;
         static constexpr auto format_len_count = static_cast<unsigned>(format_len::Full) + 1;
 
-        mutable boost::thread_specific_ptr<icu::NumberFormat> number_format_[num_fmt_type_count];
+        mutable std::unique_ptr<icu::NumberFormat> number_format_[num_fmt_type_count];
         icu::UnicodeString date_format_[format_len_count];
         icu::UnicodeString time_format_[format_len_count];
         icu::UnicodeString date_time_format_[format_len_count][format_len_count];
         icu::UnicodeString default_date_format_, default_time_format_, default_date_time_format_;
-        mutable boost::thread_specific_ptr<icu::SimpleDateFormat> date_formatter_;
+        mutable std::unique_ptr<icu::SimpleDateFormat> date_formatter_;
         icu::Locale locale_;
     };
 
