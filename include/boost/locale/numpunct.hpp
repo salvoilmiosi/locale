@@ -34,7 +34,7 @@ namespace boost { namespace locale {
         BOOST_LOCALE_ASSERT_IS_SUPPORTED(CharType);
 
     public:
-        using string_type = std::numpunct<CharType>::string_type;
+        using typename std::numpunct<CharType>::string_type;
 
         numpunct(size_t refs = 0) : std::numpunct<CharType>(refs) {}
 
